@@ -1,17 +1,17 @@
 #!/usr/bin/make -f
 
 ifeq ($(MAKECMDGOALS),)
-	.DEFAULT_GOAL=$(basename $(firstword $(MAKEFILE_LIST)))
+	.DEFAULT_GOAL=$(notdir $(basename $(firstword $(MAKEFILE_LIST))))
 else
 	.DEFAULT_GOAL=$(basename $(firstword $(MAKECMDGOALS)))
 endif
-#$(info .DEFAULT_GOAL=$(.DEFAULT_GOAL))
+$(info .DEFAULT_GOAL=$(.DEFAULT_GOAL))
 SHELL=/bin/bash
 .ONESHELL:
 
 ###################################################
 
-.PHONY: apt-get-update help openconnect-connect
+.PHONY: apt-get-update help openconnect-connect install connect
 
 help:
 	@echo openconnect.mk install
